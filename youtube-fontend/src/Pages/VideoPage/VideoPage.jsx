@@ -17,7 +17,7 @@ const VideoPage = () => {
 
     // fetching video by video id 
     const fetchVedioById = async () => {
-        await axios.get(`http://localhost:3000/api/getVideoById/${id}`).then((response) => {
+        await axios.get(`http://localhost:4000/api/getVideoById/${id}`).then((response) => {
             console.log(response.data.video);
             setData(response.data.video)
             setVideoURL(response.data.video.videoLink)
@@ -29,7 +29,7 @@ const VideoPage = () => {
 
     // fetching comments by video id 
     const getCommentByVideoId = async () => {
-        await axios.get(`http://localhost:3000/api/comment/${id}`).then((response) => {
+        await axios.get(`http://localhost:4000/api/comment/${id}`).then((response) => {
             console.log(response);
             setComments(response.data.comment)
         }).catch(err => {
@@ -51,7 +51,7 @@ const VideoPage = () => {
             "message": message,
             "video": id
         }
-        await axios.post('http://localhost:3000/api/comments', body, { withCredentials: true }).then((resp) => {
+        await axios.post('http://localhost:4000/api/comments', body, { withCredentials: true }).then((resp) => {
             console.log(resp)
             const newComment = resp.data.comment;
             setComments([newComment, ...comments]);
